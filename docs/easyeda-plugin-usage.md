@@ -43,13 +43,13 @@ npm run build
 The package is written to:
 
 ```text
-apps/easyeda-bridge-extension/build/dist/easyeda-design-agent-bridge_v0.1.0.eext
+apps/easyeda-bridge-extension/build/dist/easyeda-design-agent-bridge_v0.1.1.eext
 ```
 
 Use this exact file when importing into EasyEDA Pro:
 
 ```text
-E:\eda-project\apps\easyeda-bridge-extension\build\dist\easyeda-design-agent-bridge_v0.1.0.eext
+E:\eda-project\apps\easyeda-bridge-extension\build\dist\easyeda-design-agent-bridge_v0.1.1.eext
 ```
 
 Do not import files from these locations:
@@ -75,6 +75,8 @@ Advanced -> Extension Manager -> Import
 
 Select the `.eext` package and enable it.
 
+If you previously imported `easyeda-design-agent-bridge_v0.1.0.eext`, remove or disable that old extension first. Version `0.1.0` was packaged without `dist/index.js`, so its menu may appear but clicks do nothing. Use `v0.1.1` or newer.
+
 Recommended manual install sequence:
 
 1. Open EasyEDA Pro / JLCEDA Pro.
@@ -88,7 +90,7 @@ Advanced -> Extension Manager
 4. Select:
 
 ```text
-E:\eda-project\apps\easyeda-bridge-extension\build\dist\easyeda-design-agent-bridge_v0.1.0.eext
+E:\eda-project\apps\easyeda-bridge-extension\build\dist\easyeda-design-agent-bridge_v0.1.1.eext
 ```
 
 5. Enable the extension after import.
@@ -320,3 +322,42 @@ npm run test:schematic-captured -- path\to\schematic-snapshot.json
 ## Known API Risk
 
 EasyEDA API names for labels, ports, and power flags may differ by client version. The extension records read warnings in `snapshot.warnings` instead of failing the entire export when optional label APIs are unavailable.
+
+## Troubleshooting
+
+### Menu appears but clicking does nothing
+
+Check that the imported file is:
+
+```text
+easyeda-design-agent-bridge_v0.1.1.eext
+```
+
+Do not use:
+
+```text
+easyeda-design-agent-bridge_v0.1.0.eext
+```
+
+The package must contain:
+
+```text
+dist/index.js
+```
+
+If needed, rebuild:
+
+```powershell
+cd E:\eda-project
+npm run build:easyeda-bridge
+```
+
+Then import:
+
+```text
+E:\eda-project\apps\easyeda-bridge-extension\build\dist\easyeda-design-agent-bridge_v0.1.1.eext
+```
+
+### Only status/about menu items appear
+
+You are likely on the home page or another non-schematic context. Open an actual schematic sheet. The export commands are registered under the schematic editor context.
