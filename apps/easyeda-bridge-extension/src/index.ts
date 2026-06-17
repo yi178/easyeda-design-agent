@@ -10,6 +10,18 @@ function showError(title: string, error: unknown): void {
   showInformation(title, [error instanceof Error ? error.message : String(error)]);
 }
 
+function confirmAction(message: string, title: string, mainButtonTitle = 'Continue'): Promise<boolean> {
+  return new Promise((resolve) => {
+    eda.sys_Dialog.showConfirmationMessage(
+      message,
+      title,
+      mainButtonTitle,
+      'Cancel',
+      (confirmed: boolean) => resolve(confirmed),
+    );
+  });
+}
+
 function showProgress(progress: number, title: string): void {
   try {
     eda.sys_LoadingAndProgressBar.showProgressBar(progress, title);
@@ -50,6 +62,31 @@ async function saveText(text: string, filename: string): Promise<void> {
   await eda.sys_FileSystem.saveFile(blob, filename);
 }
 
+async function currentDocumentInfo(): Promise<Record<string, unknown> | undefined> {
+  try {
+    return await eda.dmt_SelectControl.getCurrentDocumentInfo();
+  }
+  catch {
+    return undefined;
+  }
+}
+
+function isLikelySchematicDocument(document: Record<string, unknown> | undefined): boolean {
+  if (!document)
+    return false;
+  const type = document.documentType;
+  return type === 1 || String(type).toLowerCase().includes('schematic');
+}
+
+function describeDocument(document: Record<string, unknown> | undefined): string {
+  if (!document)
+    return '<none>';
+  return [
+    `documentType=${String(document.documentType ?? '<unknown>')}`,
+    `uuid=${String(document.uuid ?? '<unknown>')}`,
+  ].join(', ');
+}
+
 function safeFilename(value: string): string {
   return value.replace(/[^\w.-]+/g, '-').replace(/^-+|-+$/g, '') || 'schematic';
 }
@@ -57,12 +94,14 @@ function safeFilename(value: string): string {
 export function activate(_status?: 'onStartupFinished', _arg?: string): void {}
 
 export async function showReadOnlyBridgeStatus(): Promise<void> {
+  const documentInfo = await currentDocumentInfo();
   const project = await tryReadText('Current project', async () => eda.dmt_Project.getCurrentProjectInfo());
-  const document = await tryReadText('Current document', async () => eda.dmt_SelectControl.getCurrentDocumentInfo());
+  const document = await tryReadText('Current document', async () => documentInfo);
   showInformation('EasyEDA Design Agent', [
     'Mode: read-only schematic snapshot exporter',
     'Write operations: disabled',
     'Arbitrary JavaScript execution: disabled',
+    `Active document looks schematic: ${isLikelySchematicDocument(documentInfo) ? 'yes' : 'no'}`,
     '',
     project,
     '',
@@ -98,6 +137,24 @@ export function howToUseReadOnlyBridge(): void {
 
 export async function exportActiveSchematicSnapshot(): Promise<void> {
   try {
+    const document = await currentDocumentInfo();
+    const filenameHint = 'project-name-schematic-snapshot.json';
+    const approved = await confirmAction(
+      [
+        'This will read the active schematic and then ask EasyEDA to save a JSON snapshot.',
+        '',
+        `Current document: ${describeDocument(document)}`,
+        `Looks schematic: ${isLikelySchematicDocument(document) ? 'yes' : 'no'}`,
+        '',
+        'If this is not a schematic page, cancel and open the schematic sheet first.',
+        `Suggested filename pattern: ${filenameHint}`,
+      ].join('\n'),
+      'Export Active Schematic Snapshot',
+      'Export',
+    );
+    if (!approved)
+      return;
+
     showProgress(15, 'Reading active schematic');
     const snapshot = await collectActiveSchematicSnapshot();
     showProgress(75, 'Preparing snapshot JSON');
@@ -126,6 +183,22 @@ export async function exportActiveSchematicSnapshot(): Promise<void> {
 
 export async function exportActiveSchematicSummary(): Promise<void> {
   try {
+    const document = await currentDocumentInfo();
+    const approved = await confirmAction(
+      [
+        'This will read the active schematic and then ask EasyEDA to save a text summary.',
+        '',
+        `Current document: ${describeDocument(document)}`,
+        `Looks schematic: ${isLikelySchematicDocument(document) ? 'yes' : 'no'}`,
+        '',
+        'If this is not a schematic page, cancel and open the schematic sheet first.',
+      ].join('\n'),
+      'Export Schematic Summary',
+      'Export',
+    );
+    if (!approved)
+      return;
+
     showProgress(20, 'Reading active schematic');
     const snapshot = await collectActiveSchematicSnapshot();
     showProgress(80, 'Preparing summary');

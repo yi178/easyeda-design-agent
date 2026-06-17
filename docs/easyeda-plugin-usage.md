@@ -43,13 +43,13 @@ npm run build
 The package is written to:
 
 ```text
-apps/easyeda-bridge-extension/build/dist/easyeda-design-agent-bridge_v0.1.2.eext
+apps/easyeda-bridge-extension/build/dist/easyeda-design-agent-bridge_v0.1.3.eext
 ```
 
 Use this exact file when importing into EasyEDA Pro:
 
 ```text
-E:\eda-project\apps\easyeda-bridge-extension\build\dist\easyeda-design-agent-bridge_v0.1.2.eext
+E:\eda-project\apps\easyeda-bridge-extension\build\dist\easyeda-design-agent-bridge_v0.1.3.eext
 ```
 
 Do not import files from these locations:
@@ -75,7 +75,7 @@ Advanced -> Extension Manager -> Import
 
 Select the `.eext` package and enable it.
 
-If you previously imported `easyeda-design-agent-bridge_v0.1.0.eext` or `v0.1.1`, remove or disable that old extension first. Version `0.1.0` was packaged without `dist/index.js`, so its menu may appear but clicks do nothing. Use `v0.1.2` or newer.
+If you previously imported `easyeda-design-agent-bridge_v0.1.0.eext`, `v0.1.1`, or `v0.1.2`, remove or disable that old extension first. Version `0.1.0` was packaged without `dist/index.js`, so its menu may appear but clicks do nothing. Use `v0.1.3` or newer.
 
 Recommended manual install sequence:
 
@@ -90,7 +90,7 @@ Advanced -> Extension Manager
 4. Select:
 
 ```text
-E:\eda-project\apps\easyeda-bridge-extension\build\dist\easyeda-design-agent-bridge_v0.1.2.eext
+E:\eda-project\apps\easyeda-bridge-extension\build\dist\easyeda-design-agent-bridge_v0.1.3.eext
 ```
 
 5. Enable the extension after import.
@@ -341,7 +341,7 @@ EasyEDA API names for labels, ports, and power flags may differ by client versio
 Check that the imported file is:
 
 ```text
-easyeda-design-agent-bridge_v0.1.2.eext
+easyeda-design-agent-bridge_v0.1.3.eext
 ```
 
 Do not use:
@@ -366,7 +366,7 @@ npm run build:easyeda-bridge
 Then import:
 
 ```text
-E:\eda-project\apps\easyeda-bridge-extension\build\dist\easyeda-design-agent-bridge_v0.1.2.eext
+E:\eda-project\apps\easyeda-bridge-extension\build\dist\easyeda-design-agent-bridge_v0.1.3.eext
 ```
 
 ### Only status/about menu items appear
