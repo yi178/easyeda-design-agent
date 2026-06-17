@@ -61,6 +61,30 @@ A sample only moves up the regression ladder after lower levels pass.
 
 For EasyEDA-first testing, prefer versions hosted on a public EasyEDA/OSHWLab-style project page so the bridge reads native EasyEDA objects. External KiCad/Eagle projects are still useful, but record the import/conversion path.
 
+## Screened EasyEDA/JLCEDA Candidates
+
+These candidates were screened by looking for EasyEDA-style schematic JSON such as `schematics[].dataStr.shape` and `part_netLabel_netPort`, then checking repository file trees for schematic JSON, PCB JSON, PDFs, BOMs, Gerbers, or images.
+
+| Level | Project | Source | Files to try first | Why it is useful |
+|---|---|---|---|---|
+| 1 | KUSBA | <https://github.com/xbst/KUSBA> | `EasyEDA-Source/v2.4/SCH.json`, `EasyEDA-Source/v2.4/PCB.json` | Small real product with multiple revisions, EasyEDA source, Gerbers, CAD, firmware docs. Good first public regression after tiny controlled fixtures. |
+| 1 | OpenSpool Mini daughterboard | <https://github.com/spuder/OpenSpool> | `hardware/openspool-mini-daughterboard/v1.1/SCH_OpenSpool-Mini-Daughterboard_2025-06-16.json` | Small daughterboard with SCH/PCB/BOM/PnP/Gerber. Good for import/export mechanics and labels without too much circuit complexity. |
+| 2 | Tiny Blackbox | <https://github.com/alexeystn/tiny-blackbox> | `Hardware/EasyEDA/schematic.json`, `Hardware/EasyEDA/board.json` | Compact STM32 board with flash/storage and debug/programming context. Useful for MCU block recognition beyond the current STM32 minimum-system fixture. |
+| 2 | FlopperZiro | <https://github.com/lraton/FlopperZiro> | `PCB and Schematic/Schematic/SCH_FlopperZiro_2024.json` | Consumer-style multi-interface board with schematic PDF and PCB JSON. Useful for connectors, SD/RF/IR/RFID-style blocks. |
+| 3 | OpenSpool Mini | <https://github.com/spuder/OpenSpool> | `hardware/openspool-mini/v3.1/SCH_OpenSpool_2024-12-25.json` | ESP32-class board with repeated public revisions and supporting documentation. Good for labels, headers, power, NFC/IO style blocks. |
+| 3 | Sesame Robot Distro Board | <https://github.com/dorianborian/sesame-robot> | `hardware/pcb/distro-v3/SCH_Sesame-Distro-Board-V3.json` | Robot distribution board with EasyEDA SCH/PCB/BOM/Gerber and mechanical context. Good for power distribution and connector-heavy designs. |
+| 3 | Line Follower Robot PCB | <https://github.com/Rahber-Saeed/Line-Follower-Robot-PCB-V1.0-8CH-IR-Bluetooth> | `SCH_newLFRonly_2026-05-03.json` | Analog sensor array, op-amps, motor driver, Bluetooth, regulators. Useful for repeated channels and mixed analog/digital blocks. |
+| 4 | SimpleFOCMini | <https://github.com/simplefoc/SimpleFOCMini> | `EasyEDA/SCH_simplefocmini_2024-04-26.json` | Motor-driver/power-stage board with EasyEDA, Altium, PDF, Gerber, PnP. Good for semantic checks around power stage, current paths, and motor phases. |
+| 4 | RejsaCAN ESP32 | <https://github.com/MagnusThome/RejsaCAN-ESP32> | `Schematics/RejsaCAN v6.x (ESP32-C6 based dual CAN board)/RejsaCAN v6.0 - Schematic.json` | ESP32 + dual CAN/OBD-style board with multiple revisions. Good for CAN validators, connectors, multi-version regression. |
+| 4 | Open Gamma Detector | <https://github.com/OpenGammaProject/Open-Gamma-Detector> | `hardware/SCH_Project_EasyEDA.json` | Larger EasyEDA hardware project with schematic PDF, 4-layer Gerbers, BOM, enclosure, firmware. Useful for analog front-end, MCU, display, power, and documentation cross-checks. |
+| 5 | A4091 hardware | <https://github.com/A4091/a4091-hardware> | `easyeda/ReA4091_Mini_2024-10-24_SCH.json` first; later Rev3/Rev4 | Very complex retro-computing board with large EasyEDA schematics, PCB JSON, production data, PDFs. Best stress test for object classification, many net labels/ports, and large component counts. |
+
+Notes:
+
+- These files are mostly EasyEDA Standard-style JSON exports. In EasyEDA Pro/JLCEDA Pro they may require the import workflow rather than direct "open file". Record the exact import path for each benchmark.
+- Do not commit downloaded third-party project files unless the license allows redistribution. For early screening, keep local downloads outside committed fixtures and commit only benchmark metadata plus captured snapshots when licensing is clear.
+- Start with KUSBA or OpenSpool daughterboard before A4091. A4091 is useful, but it will produce many adapter failures until labels, ports, wires, buses, and title-block artifacts are classified correctly.
+
 ## Manual Capture Procedure
 
 For each candidate:
