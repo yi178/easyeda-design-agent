@@ -3,7 +3,7 @@
   "uuid": "23b13bd6b3ed4adbbacbb94ea0d21f37",
   "displayName": "EasyEDA Design Agent",
   "description": "Read-only schematic snapshot exporter for easyeda-design-agent.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "easyeda-design-agent",
   "engines": {
     "eda": "^3.0.0"
@@ -32,8 +32,13 @@
           },
           {
             "id": "showReadOnlyBridgeStatus",
-            "title": "Show Read-only Bridge Status",
+            "title": "Show Status / Current Context",
             "registerFn": "showReadOnlyBridgeStatus"
+          },
+          {
+            "id": "howToUseReadOnlyBridge",
+            "title": "How to Export Schematic",
+            "registerFn": "howToUseReadOnlyBridge"
           },
           {
             "id": "aboutReadOnlyBridge",
@@ -50,8 +55,59 @@
         "menuItems": [
           {
             "id": "showReadOnlyBridgeStatus",
-            "title": "Show Read-only Bridge Status",
+            "title": "Show Status / Current Context",
             "registerFn": "showReadOnlyBridgeStatus"
+          },
+          {
+            "id": "howToUseReadOnlyBridge",
+            "title": "How to Export Schematic",
+            "registerFn": "howToUseReadOnlyBridge"
+          },
+          {
+            "id": "aboutReadOnlyBridge",
+            "title": "About",
+            "registerFn": "aboutReadOnlyBridge"
+          }
+        ]
+      }
+    ],
+    "blank": [
+      {
+        "id": "easyedaDesignAgent",
+        "title": "EasyEDA Design Agent",
+        "menuItems": [
+          {
+            "id": "showReadOnlyBridgeStatus",
+            "title": "Show Status / Current Context",
+            "registerFn": "showReadOnlyBridgeStatus"
+          },
+          {
+            "id": "howToUseReadOnlyBridge",
+            "title": "How to Export Schematic",
+            "registerFn": "howToUseReadOnlyBridge"
+          },
+          {
+            "id": "aboutReadOnlyBridge",
+            "title": "About",
+            "registerFn": "aboutReadOnlyBridge"
+          }
+        ]
+      }
+    ],
+    "pcb": [
+      {
+        "id": "easyedaDesignAgent",
+        "title": "EasyEDA Design Agent",
+        "menuItems": [
+          {
+            "id": "showReadOnlyBridgeStatus",
+            "title": "Show Status / Current Context",
+            "registerFn": "showReadOnlyBridgeStatus"
+          },
+          {
+            "id": "howToUseReadOnlyBridge",
+            "title": "How to Export Schematic",
+            "registerFn": "howToUseReadOnlyBridge"
           },
           {
             "id": "aboutReadOnlyBridge",

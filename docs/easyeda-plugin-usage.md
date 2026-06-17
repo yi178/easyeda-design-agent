@@ -43,13 +43,13 @@ npm run build
 The package is written to:
 
 ```text
-apps/easyeda-bridge-extension/build/dist/easyeda-design-agent-bridge_v0.1.1.eext
+apps/easyeda-bridge-extension/build/dist/easyeda-design-agent-bridge_v0.1.2.eext
 ```
 
 Use this exact file when importing into EasyEDA Pro:
 
 ```text
-E:\eda-project\apps\easyeda-bridge-extension\build\dist\easyeda-design-agent-bridge_v0.1.1.eext
+E:\eda-project\apps\easyeda-bridge-extension\build\dist\easyeda-design-agent-bridge_v0.1.2.eext
 ```
 
 Do not import files from these locations:
@@ -75,7 +75,7 @@ Advanced -> Extension Manager -> Import
 
 Select the `.eext` package and enable it.
 
-If you previously imported `easyeda-design-agent-bridge_v0.1.0.eext`, remove or disable that old extension first. Version `0.1.0` was packaged without `dist/index.js`, so its menu may appear but clicks do nothing. Use `v0.1.1` or newer.
+If you previously imported `easyeda-design-agent-bridge_v0.1.0.eext` or `v0.1.1`, remove or disable that old extension first. Version `0.1.0` was packaged without `dist/index.js`, so its menu may appear but clicks do nothing. Use `v0.1.2` or newer.
 
 Recommended manual install sequence:
 
@@ -90,7 +90,7 @@ Advanced -> Extension Manager
 4. Select:
 
 ```text
-E:\eda-project\apps\easyeda-bridge-extension\build\dist\easyeda-design-agent-bridge_v0.1.1.eext
+E:\eda-project\apps\easyeda-bridge-extension\build\dist\easyeda-design-agent-bridge_v0.1.2.eext
 ```
 
 5. Enable the extension after import.
@@ -108,7 +108,8 @@ with menu items:
 ```text
 Export Active Schematic Snapshot
 Export Snapshot Summary
-Show Read-only Bridge Status
+Show Status / Current Context
+How to Export Schematic
 About
 ```
 
@@ -125,7 +126,7 @@ Use a known small schematic first, ideally the STM32 minimum-system schematic.
 3. Click:
 
 ```text
-EasyEDA Design Agent -> Show Read-only Bridge Status
+EasyEDA Design Agent -> Show Status / Current Context
 ```
 
 Expected result:
@@ -137,6 +138,8 @@ Arbitrary JavaScript execution: disabled
 ```
 
 This confirms the extension is installed and callable.
+
+The status dialog also prints the current project and current document returned by EasyEDA. If the current document is empty or not a schematic sheet, open the schematic page before exporting.
 
 ### Test 2: Export summary
 
@@ -163,6 +166,14 @@ Read warnings: ...
 ```
 
 This is the fastest check that the extension can read the active schematic context.
+
+EasyEDA controls where the file is finally saved. Depending on client build, it may show a Save As dialog or place the file in the default download directory. If no prompt appears, check:
+
+```text
+Downloads
+EasyEDA/JLCEDA default download folder
+the last folder used by the EasyEDA save dialog
+```
 
 ### Test 3: Export full snapshot JSON
 
@@ -330,7 +341,7 @@ EasyEDA API names for labels, ports, and power flags may differ by client versio
 Check that the imported file is:
 
 ```text
-easyeda-design-agent-bridge_v0.1.1.eext
+easyeda-design-agent-bridge_v0.1.2.eext
 ```
 
 Do not use:
@@ -355,7 +366,7 @@ npm run build:easyeda-bridge
 Then import:
 
 ```text
-E:\eda-project\apps\easyeda-bridge-extension\build\dist\easyeda-design-agent-bridge_v0.1.1.eext
+E:\eda-project\apps\easyeda-bridge-extension\build\dist\easyeda-design-agent-bridge_v0.1.2.eext
 ```
 
 ### Only status/about menu items appear

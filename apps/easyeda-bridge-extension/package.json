@@ -1,6 +1,6 @@
 {
   "name": "easyeda-design-agent-bridge",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Read-only EasyEDA Pro bridge extension for schematic snapshots.",
   "author": "easyeda-design-agent",
   "license": "Apache-2.0",
