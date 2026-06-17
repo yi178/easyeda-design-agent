@@ -258,6 +258,8 @@ Then run:
 npm run test:schematic-captured -- fixtures/schematic/captured/stm32-real-snapshot.json
 ```
 
+Without an expected summary file, this command runs a captured-snapshot smoke test. It checks schema, component/pin consistency, graph construction, and prints known adapter gaps such as missing label capture or empty wire point arrays.
+
 If you exported three snapshots, test each:
 
 ```powershell
@@ -290,6 +292,12 @@ erc
 ```
 
 If `warnings` contains label or wire read failures, the snapshot may still be useful, but the EasyEDA API adapter needs to be updated for that client version.
+
+Use a strict golden comparison only after the project has an expected summary:
+
+```powershell
+npm run test:schematic-captured -- fixtures/schematic/stm32-minimal-schematic.json fixtures/schematic/stm32-minimal-expected-summary.json
+```
 
 ## First Acceptance Test
 

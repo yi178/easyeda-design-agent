@@ -103,9 +103,29 @@ For a fixed STM32 minimum-system schematic:
 ```text
 fixtures/schematic/stm32-minimal-schematic.json
 fixtures/schematic/label-inference-schematic.json
+fixtures/schematic/captured/New-Project_2026-06-15_15-19-41-schematic-snapshot.json
 ```
 
 The STM32 fixture validates explicit netlist handling. The label inference fixture validates wire/label geometry inference.
+The captured fixture is a real EasyEDA Pro export and currently works as an adapter smoke test, not a golden netlist oracle.
+
+## Validation Strategy
+
+See [Schematic readback validation strategy](readback-validation-strategy.md).
+
+Short version:
+
+```text
+raw capture smoke
+-> object classification
+-> topology checks
+-> semantic block checks
+-> semantic generation
+-> read generated schematic again
+-> graph diff and human review
+```
+
+Round-trip generation is useful for future semantic schematic generation, but it does not replace independent topology and manual checks.
 
 ## Commands
 
@@ -120,8 +140,8 @@ npm run review:schematic
 2. Install the generated `.eext` package in EasyEDA Pro.
 3. Use `Export Active Schematic Snapshot`.
 4. Add a real captured snapshot under `fixtures/schematic/captured/`.
-5. Compare captured summary against golden expectations with:
+5. Smoke-test captured snapshots with:
 
 ```powershell
-npm run test:schematic-captured -- fixtures/schematic/captured/stm32-real-snapshot.json
+npm run test:schematic-captured -- fixtures/schematic/captured/New-Project_2026-06-15_15-19-41-schematic-snapshot.json
 ```

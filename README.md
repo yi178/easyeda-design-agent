@@ -77,6 +77,8 @@ See:
 - [Open-source launch plan](docs/open-source-launch-plan.md)
 - [Recommended project design](docs/recommended-project-design.md)
 - [EasyEDA plugin usage](docs/easyeda-plugin-usage.md)
+- [Schematic readback validation strategy](docs/readback-validation-strategy.md)
+- [Open-source schematic benchmark plan](docs/open-source-schematic-benchmark-plan.md)
 - [Architecture diagram](docs/github-open-architecture.svg)
 - [Initial platform diagram](docs/architecture-v0.svg)
 
