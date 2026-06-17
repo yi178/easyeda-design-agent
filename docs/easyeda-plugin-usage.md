@@ -24,6 +24,7 @@ The extension registers a schematic-page menu:
 EasyEDA Design Agent
   Export Active Schematic Snapshot
   Export Snapshot Summary
+  Export Readback Debug JSON
   Show Read-only Bridge Status
   About
 ```
@@ -43,13 +44,13 @@ npm run build
 The package is written to:
 
 ```text
-apps/easyeda-bridge-extension/build/dist/easyeda-design-agent-bridge_v0.1.3.eext
+apps/easyeda-bridge-extension/build/dist/easyeda-design-agent-bridge_v0.1.4.eext
 ```
 
 Use this exact file when importing into EasyEDA Pro:
 
 ```text
-E:\eda-project\apps\easyeda-bridge-extension\build\dist\easyeda-design-agent-bridge_v0.1.3.eext
+E:\eda-project\apps\easyeda-bridge-extension\build\dist\easyeda-design-agent-bridge_v0.1.4.eext
 ```
 
 Do not import files from these locations:
@@ -75,7 +76,7 @@ Advanced -> Extension Manager -> Import
 
 Select the `.eext` package and enable it.
 
-If you previously imported `easyeda-design-agent-bridge_v0.1.0.eext`, `v0.1.1`, or `v0.1.2`, remove or disable that old extension first. Version `0.1.0` was packaged without `dist/index.js`, so its menu may appear but clicks do nothing. Use `v0.1.3` or newer.
+If you previously imported `easyeda-design-agent-bridge_v0.1.0.eext`, `v0.1.1`, `v0.1.2`, or `v0.1.3`, remove or disable that old extension first. Version `0.1.0` was packaged without `dist/index.js`, so its menu may appear but clicks do nothing. Use `v0.1.4` or newer.
 
 Recommended manual install sequence:
 
@@ -90,7 +91,7 @@ Advanced -> Extension Manager
 4. Select:
 
 ```text
-E:\eda-project\apps\easyeda-bridge-extension\build\dist\easyeda-design-agent-bridge_v0.1.3.eext
+E:\eda-project\apps\easyeda-bridge-extension\build\dist\easyeda-design-agent-bridge_v0.1.4.eext
 ```
 
 5. Enable the extension after import.
@@ -108,6 +109,7 @@ with menu items:
 ```text
 Export Active Schematic Snapshot
 Export Snapshot Summary
+Export Readback Debug JSON
 Show Status / Current Context
 How to Export Schematic
 About
@@ -223,6 +225,38 @@ The JSON should contain:
   "fingerprint": "..."
 }
 ```
+
+### Test 3.5: Export readback debug JSON
+
+Use this when the normal snapshot exports but labels, ports, power symbols, or wire point arrays look wrong.
+
+1. Keep the target schematic page active.
+2. Click:
+
+```text
+EasyEDA Design Agent -> Export Readback Debug JSON
+```
+
+3. Save the offered JSON file, for example:
+
+```text
+E:\eda-project\fixtures\schematic\captured\stm32-real-readback-debug-1.json
+```
+
+Expected result:
+
+The dialog should show counts for EasyEDA API groups such as:
+
+```text
+component: ...
+wire: ...
+net-label: ...
+net-port: ...
+net-flag: ...
+power-port: ...
+```
+
+The debug JSON is not a `SchematicSnapshot`. It records read-only diagnostics: object keys, available getter names, fixed allow-list getter values, pin samples, and suspicious one-pin component summaries. Use it to fix adapter mappings.
 
 ### Test 4: Repeatability
 
@@ -349,7 +383,7 @@ EasyEDA API names for labels, ports, and power flags may differ by client versio
 Check that the imported file is:
 
 ```text
-easyeda-design-agent-bridge_v0.1.3.eext
+easyeda-design-agent-bridge_v0.1.4.eext
 ```
 
 Do not use:
@@ -374,7 +408,7 @@ npm run build:easyeda-bridge
 Then import:
 
 ```text
-E:\eda-project\apps\easyeda-bridge-extension\build\dist\easyeda-design-agent-bridge_v0.1.3.eext
+E:\eda-project\apps\easyeda-bridge-extension\build\dist\easyeda-design-agent-bridge_v0.1.4.eext
 ```
 
 ### Only status/about menu items appear

@@ -1,4 +1,4 @@
-import { collectActiveSchematicSnapshot, summarizeSnapshot } from './schematic-snapshot';
+import { collectActiveSchematicReadbackDebug, collectActiveSchematicSnapshot, summarizeSnapshot } from './schematic-snapshot';
 
 declare const eda: any;
 
@@ -123,6 +123,7 @@ export function howToUseReadOnlyBridge(): void {
     '3. Open the target schematic sheet, not the PCB or Home page.',
     '4. Use: EasyEDA Design Agent -> Export Snapshot Summary for a quick check.',
     '5. Use: EasyEDA Design Agent -> Export Active Schematic Snapshot for JSON.',
+    '6. If labels or wire points look wrong, use: EasyEDA Design Agent -> Export Readback Debug JSON.',
     '',
     'When saving, EasyEDA controls the final location.',
     'If no Save As dialog appears, check Downloads or the EasyEDA default download directory.',
@@ -178,6 +179,57 @@ export async function exportActiveSchematicSnapshot(): Promise<void> {
   catch (error) {
     clearProgress();
     showError('Schematic Snapshot Export Failed', error);
+  }
+}
+
+export async function exportActiveSchematicReadbackDebug(): Promise<void> {
+  try {
+    const document = await currentDocumentInfo();
+    const approved = await confirmAction(
+      [
+        'This will read the active schematic and save a debug JSON file.',
+        '',
+        'The debug export is read-only and uses a fixed getter allow-list.',
+        'It is intended for diagnosing missing labels, ports, power flags, and wire points.',
+        '',
+        `Current document: ${describeDocument(document)}`,
+        `Looks schematic: ${isLikelySchematicDocument(document) ? 'yes' : 'no'}`,
+        '',
+        'If this is not a schematic page, cancel and open the schematic sheet first.',
+      ].join('\n'),
+      'Export Readback Debug JSON',
+      'Export',
+    );
+    if (!approved)
+      return;
+
+    showProgress(15, 'Reading active schematic debug data');
+    const debug = await collectActiveSchematicReadbackDebug();
+    showProgress(90, 'Opening save dialog');
+    const projectRecord = typeof debug.project === 'object' && debug.project
+      ? debug.project as Record<string, unknown>
+      : {};
+    const projectName = String(projectRecord.friendlyName ?? projectRecord.name ?? 'schematic');
+    const filename = `${safeFilename(projectName)}-readback-debug.json`;
+    await saveJson(debug, filename);
+    clearProgress();
+
+    const apiGroups = Array.isArray(debug.apiGroups) ? debug.apiGroups as Array<Record<string, unknown>> : [];
+    showInformation('Readback Debug Exported', [
+      `Fingerprint: ${debug.fingerprint ?? '<none>'}`,
+      '',
+      ...apiGroups.map(group => `${group.kind}: ${group.count ?? 0}`),
+      '',
+      `Requested filename: ${filename}`,
+      'EasyEDA controls the final save location.',
+      'If no Save As dialog appeared, check Downloads or the EasyEDA default download directory.',
+      '',
+      'Attach this file when reporting missing labels, ports, power flags, or wire points.',
+    ]);
+  }
+  catch (error) {
+    clearProgress();
+    showError('Readback Debug Export Failed', error);
   }
 }
 
