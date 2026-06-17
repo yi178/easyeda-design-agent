@@ -1,4 +1,7 @@
 import { assertSnapshotShape, DESIGN_GRAPH_SCHEMA_VERSION } from '../../design-ir/src/schema.mjs';
+import { buildSchematicGraph } from './schematic.mjs';
+
+export { buildSchematicGraph } from './schematic.mjs';
 
 function endpointKey(endpoint) {
   return `${endpoint.ref}.${endpoint.pin}`;
@@ -34,6 +37,9 @@ function inferComponentKind(component) {
 }
 
 export function buildDesignGraph(snapshot) {
+  if (snapshot?.kind === 'schematic')
+    return buildSchematicGraph(snapshot);
+
   const shape = assertSnapshotShape(snapshot);
   if (!shape.ok)
     throw new Error(`Invalid snapshot: ${shape.errors.join('; ')}`);
@@ -87,4 +93,3 @@ export function buildDesignGraph(snapshot) {
     },
   };
 }
-

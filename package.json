@@ -14,9 +14,14 @@
   ],
   "scripts": {
     "review:fixture": "node apps/cli/src/index.mjs fixtures/snapshots/stm32-minimal-snapshot.json runs/stm32-minimal-review",
+    "review:schematic": "node apps/cli/src/index.mjs fixtures/schematic/stm32-minimal-schematic.json runs/schematic-stm32-review",
+    "test:schematic-captured": "node scripts/test-captured-schematic.mjs",
+    "easyeda:std-to-snapshot": "node scripts/easyeda-std-to-snapshot.mjs",
+    "easyeda:snapshot-to-std": "node scripts/snapshot-to-easyeda-std.mjs",
+    "easyeda:diff-graph": "node scripts/diff-schematic-graph.mjs",
+    "build:easyeda-bridge": "npm run build --workspace apps/easyeda-bridge-extension",
     "lint": "node scripts/check-docs.mjs",
     "test": "node evals/run-evals.mjs",
     "eval": "node evals/run-evals.mjs"
   }
 }
-

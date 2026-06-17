@@ -8,8 +8,16 @@ const requiredFiles = [
   'LICENSE',
   'docs/open-source-launch-plan.md',
   'docs/recommended-project-design.md',
+  'docs/schematic-readback-plan.md',
+  'docs/schematic-snapshot-schema.md',
+  'docs/easyeda-plugin-usage.md',
   'docs/github-open-architecture.mmd',
+  'apps/easyeda-bridge-extension/extension.json',
+  'apps/easyeda-bridge-extension/src/index.ts',
+  'apps/easyeda-bridge-extension/src/schematic-snapshot.ts',
   'fixtures/snapshots/stm32-minimal-snapshot.json',
+  'fixtures/schematic/stm32-minimal-schematic.json',
+  'fixtures/schematic/label-inference-schematic.json',
 ];
 
 async function main() {
@@ -29,4 +37,3 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
-

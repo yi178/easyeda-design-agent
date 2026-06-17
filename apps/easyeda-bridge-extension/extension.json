@@ -1,0 +1,171 @@
+{
+  "name": "easyeda-design-agent-bridge",
+  "uuid": "23b13bd6b3ed4adbbacbb94ea0d21f37",
+  "displayName": "EasyEDA Design Agent",
+  "description": "Read-only schematic snapshot exporter for easyeda-design-agent.",
+  "version": "0.1.4",
+  "publisher": "easyeda-design-agent",
+  "engines": {
+    "eda": "^3.0.0"
+  },
+  "license": "Apache-2.0",
+  "categories": "Schematic",
+  "keywords": ["AI", "Schematic", "Snapshot", "Review"],
+  "activationEvents": {},
+  "entry": "./dist/index",
+  "dependentExtensions": {},
+  "headerMenus": {
+    "sch": [
+      {
+        "id": "easyedaDesignAgent",
+        "title": "EasyEDA Design Agent",
+        "menuItems": [
+          {
+            "id": "exportActiveSchematicSnapshot",
+            "title": "Export Active Schematic Snapshot",
+            "registerFn": "exportActiveSchematicSnapshot"
+          },
+          {
+            "id": "exportActiveSchematicSummary",
+            "title": "Export Snapshot Summary",
+            "registerFn": "exportActiveSchematicSummary"
+          },
+          {
+            "id": "exportActiveSchematicReadbackDebug",
+            "title": "Export Readback Debug JSON",
+            "registerFn": "exportActiveSchematicReadbackDebug"
+          },
+          {
+            "id": "showReadOnlyBridgeStatus",
+            "title": "Show Status / Current Context",
+            "registerFn": "showReadOnlyBridgeStatus"
+          },
+          {
+            "id": "howToUseReadOnlyBridge",
+            "title": "How to Export Schematic",
+            "registerFn": "howToUseReadOnlyBridge"
+          },
+          {
+            "id": "aboutReadOnlyBridge",
+            "title": "About",
+            "registerFn": "aboutReadOnlyBridge"
+          }
+        ]
+      }
+    ],
+    "home": [
+      {
+        "id": "easyedaDesignAgent",
+        "title": "EasyEDA Design Agent",
+        "menuItems": [
+          {
+            "id": "exportActiveSchematicSnapshot",
+            "title": "Export Active Schematic Snapshot",
+            "registerFn": "exportActiveSchematicSnapshot"
+          },
+          {
+            "id": "exportActiveSchematicSummary",
+            "title": "Export Snapshot Summary",
+            "registerFn": "exportActiveSchematicSummary"
+          },
+          {
+            "id": "exportActiveSchematicReadbackDebug",
+            "title": "Export Readback Debug JSON",
+            "registerFn": "exportActiveSchematicReadbackDebug"
+          },
+          {
+            "id": "showReadOnlyBridgeStatus",
+            "title": "Show Status / Current Context",
+            "registerFn": "showReadOnlyBridgeStatus"
+          },
+          {
+            "id": "howToUseReadOnlyBridge",
+            "title": "How to Export Schematic",
+            "registerFn": "howToUseReadOnlyBridge"
+          },
+          {
+            "id": "aboutReadOnlyBridge",
+            "title": "About",
+            "registerFn": "aboutReadOnlyBridge"
+          }
+        ]
+      }
+    ],
+    "blank": [
+      {
+        "id": "easyedaDesignAgent",
+        "title": "EasyEDA Design Agent",
+        "menuItems": [
+          {
+            "id": "exportActiveSchematicSnapshot",
+            "title": "Export Active Schematic Snapshot",
+            "registerFn": "exportActiveSchematicSnapshot"
+          },
+          {
+            "id": "exportActiveSchematicSummary",
+            "title": "Export Snapshot Summary",
+            "registerFn": "exportActiveSchematicSummary"
+          },
+          {
+            "id": "exportActiveSchematicReadbackDebug",
+            "title": "Export Readback Debug JSON",
+            "registerFn": "exportActiveSchematicReadbackDebug"
+          },
+          {
+            "id": "showReadOnlyBridgeStatus",
+            "title": "Show Status / Current Context",
+            "registerFn": "showReadOnlyBridgeStatus"
+          },
+          {
+            "id": "howToUseReadOnlyBridge",
+            "title": "How to Export Schematic",
+            "registerFn": "howToUseReadOnlyBridge"
+          },
+          {
+            "id": "aboutReadOnlyBridge",
+            "title": "About",
+            "registerFn": "aboutReadOnlyBridge"
+          }
+        ]
+      }
+    ],
+    "pcb": [
+      {
+        "id": "easyedaDesignAgent",
+        "title": "EasyEDA Design Agent",
+        "menuItems": [
+          {
+            "id": "exportActiveSchematicSnapshot",
+            "title": "Export Active Schematic Snapshot",
+            "registerFn": "exportActiveSchematicSnapshot"
+          },
+          {
+            "id": "exportActiveSchematicSummary",
+            "title": "Export Snapshot Summary",
+            "registerFn": "exportActiveSchematicSummary"
+          },
+          {
+            "id": "exportActiveSchematicReadbackDebug",
+            "title": "Export Readback Debug JSON",
+            "registerFn": "exportActiveSchematicReadbackDebug"
+          },
+          {
+            "id": "showReadOnlyBridgeStatus",
+            "title": "Show Status / Current Context",
+            "registerFn": "showReadOnlyBridgeStatus"
+          },
+          {
+            "id": "howToUseReadOnlyBridge",
+            "title": "How to Export Schematic",
+            "registerFn": "howToUseReadOnlyBridge"
+          },
+          {
+            "id": "aboutReadOnlyBridge",
+            "title": "About",
+            "registerFn": "aboutReadOnlyBridge"
+          }
+        ]
+      }
+    ]
+  }
+}

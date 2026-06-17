@@ -1,0 +1,10 @@
+{
+  "componentCount": 2,
+  "pinCount": 4,
+  "netCount": 2,
+  "endpointCount": 4,
+  "requiredNets": {
+    "+3V3": ["R1.1", "R2.1"],
+    "GND": ["R1.2", "R2.2"]
+  }
+}

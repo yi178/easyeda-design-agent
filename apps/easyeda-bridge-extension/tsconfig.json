@@ -1,0 +1,8 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["@jlceda/pro-api-types"]
+  },
+  "include": ["src/**/*.ts", "config/**/*.ts", "build/**/*.ts"]
+}
+

@@ -52,6 +52,18 @@ Generate a Markdown report:
 npm run review:fixture
 ```
 
+Generate a schematic-only readback report:
+
+```powershell
+npm run review:schematic
+```
+
+Validate a schematic snapshot exported from EasyEDA Pro:
+
+```powershell
+npm run test:schematic-captured -- path\to\schematic-snapshot.json
+```
+
 The report is written to:
 
 ```text
@@ -64,6 +76,10 @@ See:
 
 - [Open-source launch plan](docs/open-source-launch-plan.md)
 - [Recommended project design](docs/recommended-project-design.md)
+- [EasyEDA plugin usage](docs/easyeda-plugin-usage.md)
+- [Schematic readback validation strategy](docs/readback-validation-strategy.md)
+- [text-to-cad readback research](docs/text-to-cad-readback-research.md)
+- [Open-source schematic benchmark plan](docs/open-source-schematic-benchmark-plan.md)
 - [Architecture diagram](docs/github-open-architecture.svg)
 - [Initial platform diagram](docs/architecture-v0.svg)
 
@@ -94,4 +110,3 @@ v1.0 Medium-complexity board workflow
 ## License
 
 Apache-2.0.
-

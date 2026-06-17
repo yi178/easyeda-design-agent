@@ -4,6 +4,9 @@ export const READONLY_CAPABILITIES_V0_1 = {
   protocolVersion: '0.1',
   supportedOperations: [
     'project.get_context',
+    'schematic.list_documents',
+    'schematic.get_active_snapshot',
+    'schematic.get_snapshot_by_document',
     'schematic.get_snapshot',
     'pcb.get_snapshot',
     'project.get_snapshot_fingerprint',
@@ -17,4 +20,3 @@ export const READONLY_CAPABILITIES_V0_1 = {
     manufacturingOrderEnabled: false,
   },
 };
-

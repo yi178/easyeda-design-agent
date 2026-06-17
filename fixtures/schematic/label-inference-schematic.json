@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1",
+  "kind": "schematic",
+  "snapshotId": "schematic-label-inference-fixture",
+  "fingerprint": "fixture-label-inference-v1",
+  "project": {
+    "name": "LabelInference",
+    "source": "fixture",
+    "eda": "easyeda-pro"
+  },
+  "documents": [
+    { "id": "doc-sch-1", "name": "LabelInference-SCH", "type": "schematic" }
+  ],
+  "sheets": [
+    { "id": "sheet-1", "documentId": "doc-sch-1", "name": "Main" }
+  ],
+  "components": [
+    { "uuid": "cmp-r1", "sheetId": "sheet-1", "ref": "R1", "device": "r10k", "value": "10k", "x": 100, "y": 100 },
+    { "uuid": "cmp-r2", "sheetId": "sheet-1", "ref": "R2", "device": "r10k", "value": "10k", "x": 200, "y": 100 }
+  ],
+  "pins": [
+    { "sheetId": "sheet-1", "ref": "R1", "pinNumber": "1", "pinName": "1", "x": 100, "y": 100 },
+    { "sheetId": "sheet-1", "ref": "R1", "pinNumber": "2", "pinName": "2", "x": 100, "y": 120 },
+    { "sheetId": "sheet-1", "ref": "R2", "pinNumber": "1", "pinName": "1", "x": 200, "y": 100 },
+    { "sheetId": "sheet-1", "ref": "R2", "pinNumber": "2", "pinName": "2", "x": 200, "y": 120 }
+  ],
+  "wires": [
+    { "id": "w1", "sheetId": "sheet-1", "points": [[100, 100], [130, 100]] },
+    { "id": "w2", "sheetId": "sheet-1", "points": [[200, 100], [230, 100]] },
+    { "id": "w3", "sheetId": "sheet-1", "points": [[100, 120], [130, 120], [130, 150]] },
+    { "id": "w4", "sheetId": "sheet-1", "points": [[200, 120], [230, 120], [230, 150]] }
+  ],
+  "labels": [
+    { "id": "l1", "sheetId": "sheet-1", "name": "+3V3", "x": 130, "y": 100, "kind": "power-flag" },
+    { "id": "l2", "sheetId": "sheet-1", "name": "+3V3", "x": 230, "y": 100, "kind": "power-flag" },
+    { "id": "l3", "sheetId": "sheet-1", "name": "GND", "x": 130, "y": 150, "kind": "power-flag" },
+    { "id": "l4", "sheetId": "sheet-1", "name": "GND", "x": 230, "y": 150, "kind": "power-flag" }
+  ],
+  "noConnects": [],
+  "erc": []
+}

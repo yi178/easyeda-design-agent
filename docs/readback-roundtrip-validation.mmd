@@ -1,0 +1,23 @@
+flowchart TD
+  A["Open-source or controlled schematic"] --> B["EasyEDA Bridge export"]
+  B --> C["SchematicSnapshot"]
+  C --> D["SchematicGraph"]
+
+  D --> E["Readback validation gates"]
+  E --> E1["Schema and repeatability"]
+  E --> E2["Object classification"]
+  E --> E3["Net topology checks"]
+  E --> E4["Semantic block checks"]
+
+  D --> F["Semantic architecture model"]
+  F --> G["SchematicPlan generation"]
+  G --> H["Generated schematic draft"]
+  H --> I["Read generated draft again"]
+  I --> J["Graph diff"]
+
+  E1 --> K["Pass or adapter bug"]
+  E2 --> K
+  E3 --> K
+  E4 --> K
+  J --> L["Round-trip equivalence report"]
+  L --> M["Manual visual and critical-net review"]
