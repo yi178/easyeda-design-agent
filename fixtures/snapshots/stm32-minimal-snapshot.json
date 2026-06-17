@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "0.1",
+  "snapshotId": "snapshot-stm32-minimal-fixture",
+  "project": {
+    "name": "STM32F103C8T6-Core-Minimal",
+    "source": "fixture",
+    "eda": "easyeda-pro"
+  },
+  "components": [
+    { "ref": "U1", "device": "mcu", "value": "STM32F103C8T6", "pins": ["1", "5", "6", "7", "8", "9", "23", "24", "35", "36", "44", "47", "48"] },
+    { "ref": "Y1", "device": "crystal8m", "value": "8MHz", "pins": ["1", "2"] },
+    { "ref": "R1", "device": "r10k", "value": "10k", "pins": ["1", "2"] },
+    { "ref": "R2", "device": "r10k", "value": "10k", "pins": ["1", "2"] },
+    { "ref": "R3", "device": "r0", "value": "0R", "pins": ["1", "2"] },
+    { "ref": "C1", "device": "c100n", "value": "100nF", "pins": ["1", "2"] },
+    { "ref": "C2", "device": "c100n", "value": "100nF", "pins": ["1", "2"] },
+    { "ref": "C3", "device": "c100n", "value": "100nF", "pins": ["1", "2"] },
+    { "ref": "C4", "device": "c100n", "value": "100nF", "pins": ["1", "2"] },
+    { "ref": "C5", "device": "c100n", "value": "100nF", "pins": ["1", "2"] },
+    { "ref": "C6", "device": "c33p", "value": "33pF", "pins": ["1", "2"] },
+    { "ref": "C7", "device": "c33p", "value": "33pF", "pins": ["1", "2"] },
+    { "ref": "C8", "device": "c10u", "value": "10uF", "pins": ["1", "2"] }
+  ],
+  "nets": [
+    { "name": "+3V3", "endpoints": [{"ref": "U1", "pin": "1"}, {"ref": "U1", "pin": "24"}, {"ref": "U1", "pin": "36"}, {"ref": "U1", "pin": "48"}, {"ref": "R1", "pin": "1"}, {"ref": "R3", "pin": "1"}, {"ref": "C2", "pin": "1"}, {"ref": "C3", "pin": "1"}, {"ref": "C4", "pin": "1"}, {"ref": "C8", "pin": "1"}] },
+    { "name": "VDDA", "endpoints": [{"ref": "R3", "pin": "2"}, {"ref": "U1", "pin": "9"}, {"ref": "C5", "pin": "1"}] },
+    { "name": "GND", "endpoints": [{"ref": "U1", "pin": "8"}, {"ref": "U1", "pin": "23"}, {"ref": "U1", "pin": "35"}, {"ref": "U1", "pin": "47"}, {"ref": "R2", "pin": "2"}, {"ref": "C1", "pin": "2"}, {"ref": "C2", "pin": "2"}, {"ref": "C3", "pin": "2"}, {"ref": "C4", "pin": "2"}, {"ref": "C5", "pin": "2"}, {"ref": "C6", "pin": "2"}, {"ref": "C7", "pin": "2"}, {"ref": "C8", "pin": "2"}] },
+    { "name": "OSC_IN", "endpoints": [{"ref": "U1", "pin": "5"}, {"ref": "Y1", "pin": "1"}, {"ref": "C6", "pin": "1"}] },
+    { "name": "OSC_OUT", "endpoints": [{"ref": "U1", "pin": "6"}, {"ref": "Y1", "pin": "2"}, {"ref": "C7", "pin": "1"}] },
+    { "name": "NRST", "endpoints": [{"ref": "U1", "pin": "7"}, {"ref": "R1", "pin": "2"}, {"ref": "C1", "pin": "1"}] },
+    { "name": "BOOT0", "endpoints": [{"ref": "U1", "pin": "44"}, {"ref": "R2", "pin": "1"}] }
+  ],
+  "board": {
+    "widthMil": 1400,
+    "heightMil": 950,
+    "layerCount": 2,
+    "placements": [
+      { "ref": "U1", "xMil": 700, "yMil": 500, "rotation": 0, "layer": "top" },
+      { "ref": "Y1", "xMil": 360, "yMil": 260, "rotation": 0, "layer": "top" },
+      { "ref": "R1", "xMil": 980, "yMil": 180, "rotation": 90, "layer": "top" },
+      { "ref": "R2", "xMil": 1080, "yMil": 300, "rotation": 90, "layer": "top" },
+      { "ref": "R3", "xMil": 470, "yMil": 650, "rotation": 0, "layer": "top" },
+      { "ref": "C1", "xMil": 1110, "yMil": 180, "rotation": 0, "layer": "top" },
+      { "ref": "C2", "xMil": 530, "yMil": 380, "rotation": 0, "layer": "top" },
+      { "ref": "C3", "xMil": 870, "yMil": 380, "rotation": 0, "layer": "top" },
+      { "ref": "C4", "xMil": 530, "yMil": 620, "rotation": 0, "layer": "top" },
+      { "ref": "C5", "xMil": 870, "yMil": 620, "rotation": 0, "layer": "top" },
+      { "ref": "C6", "xMil": 270, "yMil": 180, "rotation": 0, "layer": "top" },
+      { "ref": "C7", "xMil": 450, "yMil": 180, "rotation": 0, "layer": "top" },
+      { "ref": "C8", "xMil": 1040, "yMil": 620, "rotation": 0, "layer": "top" }
+    ],
+    "tracks": [],
+    "vias": [],
+    "violations": []
+  }
+}
+

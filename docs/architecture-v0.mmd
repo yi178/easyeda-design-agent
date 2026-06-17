@@ -1,0 +1,61 @@
+flowchart TD
+  U["User / Hardware Engineer"]
+  A["AI Agent"]
+  SS["Skill Selector"]
+  SR["Skill Runtime"]
+
+  subgraph EDA["EasyEDA Pro"]
+    EP["Open Project"]
+    BE["Bridge Extension"]
+  end
+
+  subgraph Bridge["Local Bridge Layer"]
+    RPC["Typed RPC / JSON-RPC"]
+    CAP["Capabilities + Policy"]
+    FP["Snapshot Fingerprint"]
+  end
+
+  subgraph Core["Platform Core"]
+    AD["EasyEDA Adapter"]
+    SCH["SchematicSnapshot"]
+    PCB["BoardSnapshot"]
+    IR["Unified Design Graph"]
+    GE["Graph Engine"]
+    VE["Validators"]
+    RG["Report Generator"]
+    PE["Plan Engine"]
+  end
+
+  subgraph Safety["Execution Safety"]
+    DRY["Dry-run Preview"]
+    AP["Human Approval"]
+    EX["Whitelisted Apply"]
+    VR["Validation Gate"]
+    RB["Rollback / Reject"]
+  end
+
+  U --> A
+  A --> SS
+  SS --> SR
+  SR --> IR
+  EP --> BE
+  BE --> RPC
+  RPC --> CAP
+  CAP --> FP
+  RPC --> AD
+  AD --> SCH
+  AD --> PCB
+  SCH --> IR
+  PCB --> IR
+  IR --> GE
+  GE --> VE
+  VE --> RG
+  RG --> U
+  VE --> PE
+  PE --> DRY
+  DRY --> AP
+  AP --> EX
+  EX --> RPC
+  EX --> VR
+  VR --> RG
+  VR --> RB

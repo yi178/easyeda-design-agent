@@ -1,0 +1,60 @@
+flowchart LR
+  subgraph Users["Users and AI Tools"]
+    DEV["Hardware Engineer"]
+    AI["Codex / Claude / Cursor"]
+  end
+
+  subgraph Apps["Apps"]
+    CLI["CLI"]
+    MCP["MCP Server"]
+    BRIDGE["EasyEDA Bridge Extension"]
+    DASH["Dashboard"]
+  end
+
+  subgraph Core["Core Packages"]
+    PROTO["protocol"]
+    IR["design-ir"]
+    ADAPTER["easyeda-adapter"]
+    GRAPH["graph-engine"]
+    VALID["validators"]
+    PLAN["plan-engine"]
+    SKILL["skill-runtime"]
+    REPORT["report-generator"]
+    KB["component-kb"]
+  end
+
+  subgraph EDA["EasyEDA Pro"]
+    SCH["Schematic"]
+    PCB["PCB"]
+    DRC["ERC / DRC"]
+  end
+
+  subgraph Assets["Open Project Assets"]
+    FIX["fixtures"]
+    EVAL["evals"]
+    DOCS["docs"]
+    SKILLS["skills"]
+  end
+
+  DEV --> CLI
+  DEV --> DASH
+  AI --> MCP
+  CLI --> PROTO
+  MCP --> PROTO
+  PROTO --> BRIDGE
+  BRIDGE --> SCH
+  BRIDGE --> PCB
+  BRIDGE --> DRC
+  BRIDGE --> ADAPTER
+  ADAPTER --> IR
+  IR --> GRAPH
+  GRAPH --> VALID
+  KB --> VALID
+  SKILLS --> SKILL
+  SKILL --> VALID
+  VALID --> REPORT
+  VALID --> PLAN
+  PLAN --> PROTO
+  FIX --> IR
+  EVAL --> SKILL
+  REPORT --> DOCS

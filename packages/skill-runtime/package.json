@@ -1,0 +1,7 @@
+{
+  "name": "@easyeda-design-agent/skill-runtime",
+  "version": "0.1.0-readonly-graph.0",
+  "private": true,
+  "type": "module"
+}
+
