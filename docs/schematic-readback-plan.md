@@ -116,8 +116,12 @@ npm run review:schematic
 
 ## Next Implementation Tasks
 
-1. Scaffold `apps/easyeda-bridge-extension`.
-2. Implement `schematic.get_active_snapshot`.
-3. Export snapshot JSON from EasyEDA Pro.
+1. Build `apps/easyeda-bridge-extension`.
+2. Install the generated `.eext` package in EasyEDA Pro.
+3. Use `Export Active Schematic Snapshot`.
 4. Add a real captured snapshot under `fixtures/schematic/captured/`.
-5. Compare captured summary against golden expectations.
+5. Compare captured summary against golden expectations with:
+
+```powershell
+npm run test:schematic-captured -- fixtures/schematic/captured/stm32-real-snapshot.json
+```

@@ -58,6 +58,12 @@ Generate a schematic-only readback report:
 npm run review:schematic
 ```
 
+Validate a schematic snapshot exported from EasyEDA Pro:
+
+```powershell
+npm run test:schematic-captured -- path\to\schematic-snapshot.json
+```
+
 The report is written to:
 
 ```text
@@ -70,6 +76,7 @@ See:
 
 - [Open-source launch plan](docs/open-source-launch-plan.md)
 - [Recommended project design](docs/recommended-project-design.md)
+- [EasyEDA plugin usage](docs/easyeda-plugin-usage.md)
 - [Architecture diagram](docs/github-open-architecture.svg)
 - [Initial platform diagram](docs/architecture-v0.svg)
 

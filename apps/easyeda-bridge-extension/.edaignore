@@ -1,0 +1,8 @@
+node_modules
+dist
+build/dist
+config
+src
+tsconfig.json
+package-lock.json
+
