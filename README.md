@@ -52,6 +52,12 @@ Generate a Markdown report:
 npm run review:fixture
 ```
 
+Generate a schematic-only readback report:
+
+```powershell
+npm run review:schematic
+```
+
 The report is written to:
 
 ```text
@@ -94,4 +100,3 @@ v1.0 Medium-complexity board workflow
 ## License
 
 Apache-2.0.
-

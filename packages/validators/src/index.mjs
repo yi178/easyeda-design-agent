@@ -107,6 +107,9 @@ function validateDecoupling(graph) {
 
 function validatePlacement(graph) {
   const issues = [];
+  if (graph.kind === 'schematic')
+    return issues;
+
   for (const component of graph.components) {
     if (!component.placement) {
       issues.push(issue(
@@ -145,4 +148,3 @@ export function runValidators(graph) {
     issues,
   };
 }
-
