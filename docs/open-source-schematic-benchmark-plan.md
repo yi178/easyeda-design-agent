@@ -85,6 +85,96 @@ Notes:
 - Do not commit downloaded third-party project files unless the license allows redistribution. For early screening, keep local downloads outside committed fixtures and commit only benchmark metadata plus captured snapshots when licensing is clear.
 - Start with KUSBA or OpenSpool daughterboard before A4091. A4091 is useful, but it will produce many adapter failures until labels, ports, wires, buses, and title-block artifacts are classified correctly.
 
+## Real JLCEDA/OSHWHub Project Track
+
+The GitHub JSON candidates above are good for committed fixtures and offline repeatability. They are not enough for bridge validation because the bridge must also work when a user opens a real public project from JLCEDA/OSHWHub and exports through the EasyEDA Pro client APIs.
+
+Use this track to answer:
+
+```text
+can the extension read a real project opened in the editor exactly the way a human user would open it?
+```
+
+Metadata for this track is kept in:
+
+```text
+fixtures/schematic/benchmarks/real-oshwhub-projects.json
+```
+
+| Level | Project | JLCEDA/OSHWHub source | Companion evidence | Why it is useful |
+|---|---|---|---|---|
+| 2 | HelloWord Keyboard | <https://oshwhub.com/pengzhihui/b11afae464c54a3e8d0f77e1f92dc7b7> | <https://github.com/peng-zhihui/HelloWord-Keyboard> | Keyboard matrix and product-style documentation. Good for repeated switch groups, LEDs, USB/power labels, and public Chinese OSHWHub workflow. |
+| 3 | OpenT12 soldering station controller | <https://oshwhub.com/createskyblue/opent12-jing-jian-ban> | <https://github.com/createskyblue/OpenT12> | ESP32 controller with ADC, PWM, OLED, encoder, power and heating-control context. The repo notes the board is not fully verified, so use it for readback stress, not electrical correctness. |
+| 3 | Steering wheel meter box | <https://oshwhub.com/nolimy/steeringWheel_project> | <https://github.com/Nolimy/steeringWheel_MeterBox_STM32_FreeRTOS> | STM32 FreeRTOS hardware with vehicle/dashboard context. Useful for connectors, display/control IO, and medium-size MCU readback. |
+| 3 | ChisFlash | <https://oshwhub.com/chisbread/chisflash-prometheus> | <https://github.com/ChisBread/ChisFlash> | GBA flashcart with memory, CPLD/logic, cartridge connector and multiple board variants. Useful for high pin-count buses and repeated address/data nets. |
+| 4 | STM32-FOC motor driver board | <https://oshwhub.com/skythinker/simplefoc103> | <https://github.com/Skythinker616/foc-wheel-legged-robot/tree/main/stm32-foc> | STM32F103, DRV8313, AS5600, CAN, SWD, motor phases and 12 V power. Good bridge test and later semantic validator target. |
+| 4 | Super Dial / X-Knob hardware base | <https://oshwhub.com/45coll/a2fff3c71f5d4de2b899c64b152d3da5> | <https://github.com/SmallPond/X-Knob> | ESP32-S3, BLDC driver, round LCD, magnetic encoder and battery management. Good for multi-board and human-interface product complexity. |
+| 4 | OV-Watch | <https://oshwhub.com/no_chicken/zhi-neng-shou-biao-OV-Watch_V2.2> | <https://github.com/No-Chicken/OV-Watch> | Wearable STM32 watch with display, sensors, charging and low-power circuitry. Useful for compact dense schematics and sensor/power labels. |
+| 4 | DOGlove mainboard | <https://oshwhub.com/doublehan/doglove_mainboard> | <https://github.com/TEA-Lab/DOGlove> | Real documentation includes both `.epro` import flow and OSHWHub viewing flow. Good for testing native Pro project import and wearable sensor architecture. |
+| 4 | ESP32S3-SI4732 receiver | <https://oshwhub.com/sunnygold/esp32s3-si4732-shou-yin-ji> | <https://github.com/esp32-si4732/ats-mini> and <https://github.com/esp32-si4732/esp32-si4732-oshwhub> | ESP32-S3 plus RF receiver, display, audio and power. Good real Chinese open hardware project with an attached-file mirror. |
+| 4 | ESP32 flight controller | <https://oshwhub.com/songge8/project_qqqyfdkm> | <https://github.com/songge8/CF-Drone> | ESP32/ESP32-S3/C3 flight controller with IMU, motor outputs and battery monitoring. Good for safety-sensitive robotics-style readback. |
+| 5 | YuzukiLOHCC PRO HDMI capture card | <https://oshwhub.com/gloomyghost/yuzuki-lohcc-pro-usb-3-2-gen1-hdmi-huan-chu-cai-ji-ka> | <https://github.com/YuzukiHD/YuzukiLOHCC-PRO> | High-speed HDMI and USB3 capture card with CERN-OHL-P license. Strong stress test for differential-pair labels, connectors, flash and power rails. |
+| 5 | OpenSTM | <https://oshwhub.com/Dimsmary/4ieRpV8S00kGn1MTpsc4MyZat8MwQPzn> | <https://github.com/Dimsmary/OpenSTM> | Multi-board scientific instrument with low-noise analog, DAC, high-voltage or dual-rail power and Pro project releases. Best later-stage real engineering stress case. |
+
+Optional candidate with access friction:
+
+- YuEEG: <https://oshwhub.com/protodrive000/1299_pro>, evidence <https://github.com/YuTaoV5/YuEEG>. The public repo includes an access password. Treat it as a manual-only candidate and do not commit captured files until redistribution terms are checked.
+
+### Real-project Open Procedure
+
+Use this procedure for OSHWHub/JLCEDA projects. It is intentionally separate from importing GitHub JSON files.
+
+1. Install or import the extension once from Home or Extension Manager.
+2. Open the OSHWHub project page in the browser.
+3. Prefer the page's native "open in JLCEDA", "clone", "edit", or equivalent action. Record the exact button text because the site UI changes.
+4. If the project opens in Standard Edition only, record that. If a Pro import or `.epro` file is available, prefer Pro.
+5. Wait until the editor finishes loading the project tree.
+6. Open the target schematic page tab. Do not stay on Home, project overview, PCB, BOM, or Gerber pages.
+7. Run:
+
+```text
+EasyEDA Design Agent -> Show Read-only Bridge Status
+```
+
+Expected status:
+
+```text
+Active document looks schematic: yes
+Current project: non-empty
+Current document: documentType=1 or schematic-like
+```
+
+8. Run:
+
+```text
+EasyEDA Design Agent -> Export Snapshot Summary
+```
+
+Confirm that the summary shows nonzero components and pins. If it shows only status/help/about menus, the active tab is not a schematic page.
+
+9. Run:
+
+```text
+EasyEDA Design Agent -> Export Active Schematic Snapshot
+```
+
+EasyEDA controls the final save location. If a Save As dialog appears, save directly under `fixtures/schematic/captured/`. If no Save As dialog appears, check Downloads or the EasyEDA default download directory, then move the file into the captured fixture directory.
+
+10. Name the file:
+
+```text
+<project-slug>-<sheet-name>-snapshot.json
+```
+
+11. Run the smoke test and report:
+
+```powershell
+npm run test:schematic-captured -- fixtures\schematic\captured\<file>.json
+node apps\cli\src\index.mjs fixtures\schematic\captured\<file>.json runs\<project-slug>-review
+```
+
+12. Update the benchmark metadata with capture status, EasyEDA version, sheet name, fingerprint, counts, known missing objects, and whether the source license permits committing the captured snapshot.
+
 ## Manual Capture Procedure
 
 For each candidate:

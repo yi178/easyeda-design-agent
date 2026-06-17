@@ -1,0 +1,266 @@
+{
+  "schemaVersion": "eda-project.schematicBenchmarkManifest.v0.1",
+  "track": "real-oshwhub-jlceda-projects",
+  "purpose": "Manual bridge validation on real public JLCEDA/OSHWHub projects opened through the editor UI.",
+  "capturePolicy": {
+    "defaultCaptureStatus": "not-captured",
+    "commitThirdPartySources": false,
+    "commitCapturedSnapshotsOnlyWhenLicenseAllows": true,
+    "requiresHumanOpenInEditor": true,
+    "readOnlyBridgeOnly": true
+  },
+  "projects": [
+    {
+      "id": "hello-word-keyboard",
+      "level": 2,
+      "name": "HelloWord Keyboard",
+      "category": "keyboard product",
+      "oshwhubUrl": "https://oshwhub.com/pengzhihui/b11afae464c54a3e8d0f77e1f92dc7b7",
+      "companionUrl": "https://github.com/peng-zhihui/HelloWord-Keyboard",
+      "evidenceUrl": "https://github.com/peng-zhihui/HelloWord-Keyboard/blob/59fba533bb0e0518582cb1ec1990b4ca59e4278a/1.Hardware/%E5%B7%A5%E7%A8%8B%E9%93%BE%E6%8E%A5.txt",
+      "license": "check-before-redistribution",
+      "preferredOpenWorkflow": "Open the OSHWHub page, then use the native JLCEDA open/clone/edit action.",
+      "expectedCriticalSignals": ["USB_D+", "USB_D-", "VCC", "GND", "ROW", "COL"],
+      "usefulFor": ["repeated switch matrix", "product-style real workflow", "USB and power labels"],
+      "capture": {
+        "status": "not-captured",
+        "capturedSnapshot": null,
+        "easyedaVersion": null,
+        "sheetName": null,
+        "fingerprint": null
+      }
+    },
+    {
+      "id": "opent12-soldering-station",
+      "level": 3,
+      "name": "OpenT12 soldering station controller",
+      "category": "controller and heater interface",
+      "oshwhubUrl": "https://oshwhub.com/createskyblue/opent12-jing-jian-ban",
+      "companionUrl": "https://github.com/createskyblue/OpenT12",
+      "evidenceUrl": "https://github.com/createskyblue/OpenT12/blob/b0542867c2cfa123fc37ff1f54298928ea8ecdb0/README_cn.md",
+      "license": "check-before-redistribution",
+      "preferredOpenWorkflow": "Open the OSHWHub page, then use the native JLCEDA open/clone/edit action.",
+      "expectedCriticalSignals": ["ESP32", "ADC", "PWM", "OLED", "VCC", "GND"],
+      "usefulFor": ["ADC and PWM labels", "OLED and encoder interface", "power and heater-control blocks"],
+      "notes": "The companion README says the board is not fully verified, so use it for readback stress rather than electrical correctness.",
+      "capture": {
+        "status": "not-captured",
+        "capturedSnapshot": null,
+        "easyedaVersion": null,
+        "sheetName": null,
+        "fingerprint": null
+      }
+    },
+    {
+      "id": "steering-wheel-meter-box",
+      "level": 3,
+      "name": "Steering wheel meter box",
+      "category": "STM32 dashboard controller",
+      "oshwhubUrl": "https://oshwhub.com/nolimy/steeringWheel_project",
+      "companionUrl": "https://github.com/Nolimy/steeringWheel_MeterBox_STM32_FreeRTOS",
+      "evidenceUrl": "https://github.com/Nolimy/steeringWheel_MeterBox_STM32_FreeRTOS/blob/0ad74bb2a02c20e55bfd12ec89f4273098f4694e/Hardware/readme.txt",
+      "license": "check-before-redistribution",
+      "preferredOpenWorkflow": "Open the OSHWHub page, then use the native JLCEDA open/clone/edit action.",
+      "expectedCriticalSignals": ["STM32", "SWDIO", "SWCLK", "NRST", "VCC", "GND"],
+      "usefulFor": ["medium-size MCU readback", "connectors", "display and control IO"],
+      "capture": {
+        "status": "not-captured",
+        "capturedSnapshot": null,
+        "easyedaVersion": null,
+        "sheetName": null,
+        "fingerprint": null
+      }
+    },
+    {
+      "id": "chisflash-prometheus",
+      "level": 3,
+      "name": "ChisFlash Prometheus",
+      "category": "GBA flashcart",
+      "oshwhubUrl": "https://oshwhub.com/chisbread/chisflash-prometheus",
+      "companionUrl": "https://github.com/ChisBread/ChisFlash",
+      "evidenceUrl": "https://github.com/ChisBread/ChisFlash/blob/42da2dbf91dec1ce7d27305d25bc9da9e622497c/README-en.md",
+      "license": "check-before-redistribution",
+      "preferredOpenWorkflow": "Open the OSHWHub project page. If the latest design is only listed under the author's works page, record the exact selected work URL.",
+      "expectedCriticalSignals": ["A0", "D0", "CS", "OE", "WE", "VCC", "GND"],
+      "usefulFor": ["high pin-count buses", "memory and cartridge connectors", "CPLD or logic nets"],
+      "capture": {
+        "status": "not-captured",
+        "capturedSnapshot": null,
+        "easyedaVersion": null,
+        "sheetName": null,
+        "fingerprint": null
+      }
+    },
+    {
+      "id": "stm32-foc-simplefoc103",
+      "level": 4,
+      "name": "STM32-FOC motor driver board",
+      "category": "motor driver",
+      "oshwhubUrl": "https://oshwhub.com/skythinker/simplefoc103",
+      "companionUrl": "https://github.com/Skythinker616/foc-wheel-legged-robot/tree/main/stm32-foc",
+      "evidenceUrl": "https://github.com/Skythinker616/foc-wheel-legged-robot/blob/e2444395dd3a76c20b0683fbb1e123c21186a502/stm32-foc/README_en.md",
+      "license": "check-before-redistribution",
+      "preferredOpenWorkflow": "Open the OSHWHub page for native JLCEDA testing. The companion repo also contains LCEDA JSON files for separate import testing.",
+      "expectedCriticalSignals": ["CANH", "CANL", "SWDIO", "SWCLK", "NRST", "VM", "U", "V", "W", "GND"],
+      "usefulFor": ["motor phases", "CAN transceiver", "STM32 minimum-system checks", "power-stage semantics"],
+      "capture": {
+        "status": "not-captured",
+        "capturedSnapshot": null,
+        "easyedaVersion": null,
+        "sheetName": null,
+        "fingerprint": null
+      }
+    },
+    {
+      "id": "super-dial-x-knob-base",
+      "level": 4,
+      "name": "Super Dial / X-Knob hardware base",
+      "category": "smart knob HMI",
+      "oshwhubUrl": "https://oshwhub.com/45coll/a2fff3c71f5d4de2b899c64b152d3da5",
+      "companionUrl": "https://github.com/SmallPond/X-Knob",
+      "evidenceUrl": "https://github.com/SmallPond/X-Knob/blob/05be44fc62b27c4fa941aabd2a7e9b2553f91fb9/README_EN.md",
+      "license": "check-before-redistribution",
+      "preferredOpenWorkflow": "Open the OSHWHub page, then use the native JLCEDA open/clone/edit action.",
+      "expectedCriticalSignals": ["ESP32-S3", "LCD", "MT6701", "BAT", "CHG", "MOTOR", "GND"],
+      "usefulFor": ["multi-board product", "display and encoder signals", "battery and motor driver blocks"],
+      "capture": {
+        "status": "not-captured",
+        "capturedSnapshot": null,
+        "easyedaVersion": null,
+        "sheetName": null,
+        "fingerprint": null
+      }
+    },
+    {
+      "id": "ov-watch-v2-2",
+      "level": 4,
+      "name": "OV-Watch V2.2",
+      "category": "wearable watch",
+      "oshwhubUrl": "https://oshwhub.com/no_chicken/zhi-neng-shou-biao-OV-Watch_V2.2",
+      "companionUrl": "https://github.com/No-Chicken/OV-Watch",
+      "evidenceUrl": "https://github.com/No-Chicken/OV-Watch/blob/9b5806531214b50e4d039498f875b0f1b48808ed/README_Eng.md",
+      "license": "GPL-3.0 for companion repo; hardware redistribution must be checked",
+      "preferredOpenWorkflow": "Open the OSHWHub page, then use the native JLCEDA open/clone/edit action.",
+      "expectedCriticalSignals": ["STM32F411", "LCD", "I2C", "BAT", "CHG", "3V3", "GND"],
+      "usefulFor": ["dense wearable schematic", "sensor and charging nets", "low-power blocks"],
+      "capture": {
+        "status": "not-captured",
+        "capturedSnapshot": null,
+        "easyedaVersion": null,
+        "sheetName": null,
+        "fingerprint": null
+      }
+    },
+    {
+      "id": "doglove-mainboard",
+      "level": 4,
+      "name": "DOGlove mainboard",
+      "category": "wearable sensor mainboard",
+      "oshwhubUrl": "https://oshwhub.com/doublehan/doglove_mainboard",
+      "companionUrl": "https://github.com/TEA-Lab/DOGlove",
+      "evidenceUrl": "https://github.com/TEA-Lab/DOGlove/blob/66c6f6a21c4977912d0e596669ca704f7a98c59d/docs/hardware/01_circuit.rst",
+      "license": "check-before-redistribution",
+      "preferredOpenWorkflow": "Prefer OSHWHub native open for bridge testing. Use the documented .epro import path for Pro import testing.",
+      "expectedCriticalSignals": ["I2C", "SPI", "BAT", "CHG", "3V3", "GND"],
+      "usefulFor": ["Pro .epro import flow", "wearable sensor architecture", "documented schematic PDF cross-check"],
+      "capture": {
+        "status": "not-captured",
+        "capturedSnapshot": null,
+        "easyedaVersion": null,
+        "sheetName": null,
+        "fingerprint": null
+      }
+    },
+    {
+      "id": "esp32s3-si4732-receiver",
+      "level": 4,
+      "name": "ESP32S3-SI4732 receiver",
+      "category": "radio receiver",
+      "oshwhubUrl": "https://oshwhub.com/sunnygold/esp32s3-si4732-shou-yin-ji",
+      "companionUrl": "https://github.com/esp32-si4732/ats-mini",
+      "mirrorUrl": "https://github.com/esp32-si4732/esp32-si4732-oshwhub",
+      "evidenceUrl": "https://github.com/esp32-si4732/ats-mini/blob/main/docs/source/index.md",
+      "license": "CC-BY-NC-SA-3.0 stated for Sunnygold hardware and software in companion docs",
+      "preferredOpenWorkflow": "Open the OSHWHub page for native JLCEDA testing. Use the attached-file mirror only for offline comparison if license permits.",
+      "expectedCriticalSignals": ["ESP32-S3", "SI4732", "I2C", "LCD", "AUDIO", "ANT", "3V3", "GND"],
+      "usefulFor": ["RF receiver blocks", "display and audio nets", "real Chinese open hardware workflow"],
+      "capture": {
+        "status": "not-captured",
+        "capturedSnapshot": null,
+        "easyedaVersion": null,
+        "sheetName": null,
+        "fingerprint": null
+      }
+    },
+    {
+      "id": "cf-drone-flight-controller",
+      "level": 4,
+      "name": "CF-Drone flight controller",
+      "category": "flight controller",
+      "oshwhubUrl": "https://oshwhub.com/songge8/project_qqqyfdkm",
+      "companionUrl": "https://github.com/songge8/CF-Drone",
+      "evidenceUrl": "https://github.com/songge8/CF-Drone/blob/ea932c05084a367f52cfb489c911e2bf1e5dff92/README.MD",
+      "license": "check-before-redistribution",
+      "preferredOpenWorkflow": "Open the OSHWHub page, then use the native JLCEDA open/clone/edit action.",
+      "expectedCriticalSignals": ["ESP32", "IMU", "MOTOR", "VBAT", "PWM", "3V3", "GND"],
+      "usefulFor": ["robotics-style safety-sensitive readback", "IMU and motor IO", "battery monitoring"],
+      "capture": {
+        "status": "not-captured",
+        "capturedSnapshot": null,
+        "easyedaVersion": null,
+        "sheetName": null,
+        "fingerprint": null
+      }
+    },
+    {
+      "id": "yuzuki-lohcc-pro",
+      "level": 5,
+      "name": "YuzukiLOHCC PRO HDMI capture card",
+      "category": "high-speed video capture",
+      "oshwhubUrl": "https://oshwhub.com/gloomyghost/yuzuki-lohcc-pro-usb-3-2-gen1-hdmi-huan-chu-cai-ji-ka",
+      "companionUrl": "https://github.com/YuzukiHD/YuzukiLOHCC-PRO",
+      "evidenceUrl": "https://github.com/YuzukiHD/YuzukiLOHCC-PRO/blob/050caa6a987e58fae7847b20f4d42cc14f439b0a/README.md",
+      "license": "CERN-OHL-P-2.0 stated in companion README",
+      "preferredOpenWorkflow": "Open the OSHWHub page, then use the native JLCEDA open/clone/edit action.",
+      "expectedCriticalSignals": ["USB3", "HDMI", "D+", "D-", "TX", "RX", "FLASH", "3V3", "GND"],
+      "usefulFor": ["differential-pair labels", "high-speed connectors", "large connector pin counts", "power and flash blocks"],
+      "capture": {
+        "status": "not-captured",
+        "capturedSnapshot": null,
+        "easyedaVersion": null,
+        "sheetName": null,
+        "fingerprint": null
+      }
+    },
+    {
+      "id": "openstm",
+      "level": 5,
+      "name": "OpenSTM",
+      "category": "scientific instrumentation",
+      "oshwhubUrl": "https://oshwhub.com/Dimsmary/4ieRpV8S00kGn1MTpsc4MyZat8MwQPzn",
+      "companionUrl": "https://github.com/Dimsmary/OpenSTM",
+      "evidenceUrl": "https://github.com/Dimsmary/OpenSTM/blob/f418005b7db2896f61c39863710af142641fe801/readme_eng.md",
+      "license": "check-before-redistribution",
+      "preferredOpenWorkflow": "Use the OSHWHub page for native testing. For release packages with Pro project files, record exact release and import path.",
+      "expectedCriticalSignals": ["DAC", "OPA", "+12V", "-12V", "5V", "3V3", "BIAS", "GND"],
+      "usefulFor": ["multi-board Pro project", "low-noise analog", "dual-rail power", "scientific instrument stress case"],
+      "capture": {
+        "status": "not-captured",
+        "capturedSnapshot": null,
+        "easyedaVersion": null,
+        "sheetName": null,
+        "fingerprint": null
+      }
+    }
+  ],
+  "manualOnlyCandidates": [
+    {
+      "id": "yueeg",
+      "name": "YuEEG",
+      "oshwhubUrl": "https://oshwhub.com/protodrive000/1299_pro",
+      "companionUrl": "https://github.com/YuTaoV5/YuEEG",
+      "evidenceUrl": "https://github.com/YuTaoV5/YuEEG/blob/2068b145e794f0e977e6f73b6e9d078d7c2767ed/hardware/%E3%80%90%E5%85%88%E7%9C%8B%E3%80%91%E7%A1%AC%E4%BB%B6%E9%93%BE%E6%8E%A5.txt",
+      "reason": "The public companion repo includes an access password. Use only for manual investigation and do not commit captures until redistribution terms are checked."
+    }
+  ]
+}
